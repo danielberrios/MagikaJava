@@ -257,7 +257,7 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().right&&! attacking)
             xMove = speed;
         if(handler.getKeyManager().ibutt)
-        	if (getHealth() < 75) setHealth(getHealth() + 1);
+        	if (getHealth() < 75) setHealth(75);
     }
 
     private void FireBallAttack(Graphics g) {
