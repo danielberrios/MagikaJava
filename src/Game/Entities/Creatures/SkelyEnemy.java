@@ -85,7 +85,6 @@ public class SkelyEnemy extends CreatureBase  {
 
         Skelyinventory.tick();
 
-
     }
 
 
