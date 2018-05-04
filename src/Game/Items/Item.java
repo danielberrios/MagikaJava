@@ -30,7 +30,8 @@ public class Item {
     public static Item woodItem = new Item(Images.items[0],"Wood",0);
     public static Item rockItem = new Item(Images.blocks[14],"Rock",1);
     public static Item fireRuneItem = new Item(Images.Runes[2],"Fire Rune",2);
-
+    public static Item stickItem = new Item(Images.stick, "Stick",3);
+    public static Item bananaItem = new Item(Images.banana, "Banana",3);
 
     //class
 

@@ -45,7 +45,9 @@ public class Images {
     public static BufferedImage[] FireBallDown;
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
-
+    public static BufferedImage stick;
+    public static BufferedImage banana;
+    public static BufferedImage[] chest;
 
     public Images() {
 
@@ -56,7 +58,7 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
-
+        SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
 
 
         blocks = new BufferedImage[15];
@@ -85,7 +87,7 @@ public class Images {
         FireBallUp = new BufferedImage[6];
         FireBallDown = new BufferedImage[6];
 
-
+        chest = new BufferedImage[2];
 
 
         try {
@@ -105,6 +107,13 @@ public class Images {
             BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
             Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
             Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+            
+            stick = ImageIO.read(getClass().getResourceAsStream("/Sheets/stick.png"));
+            banana = ImageIO.read(getClass().getResourceAsStream("/Sheets/banana.png"));
+            
+            //chest
+            chest[0] = chestSheet.crop(width*0, height*0, width, height);
+            chest[1] = chestSheet.crop(width*1, height*0, width, height);
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));

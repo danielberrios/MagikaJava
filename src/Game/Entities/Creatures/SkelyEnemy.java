@@ -2,6 +2,7 @@ package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -80,6 +81,8 @@ public class SkelyEnemy extends CreatureBase  {
         if(healthcounter>=120&& !isBeinghurt()){
             healthcounter=0;
         }
+        
+        
 
 
         Skelyinventory.tick();
@@ -189,6 +192,6 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void die() {
-
+    	handler.getWorld().getItemManager().addItem(Item.bananaItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
     }
 }
