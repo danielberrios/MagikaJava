@@ -38,6 +38,8 @@ public class Player extends CreatureBase {
     private Boolean LaunchedFireBallU=false;
     private Boolean LaunchedFireBallD=false;
     private Boolean attacking=false;
+    
+    public boolean faceUp = false;
 
     private int animWalkingSpeed = 150;
     private int animFireSpeed = 250;
@@ -258,6 +260,11 @@ public class Player extends CreatureBase {
             xMove = speed;
         if(handler.getKeyManager().ibutt)
         	if (getHealth() < 75) setHealth(75);
+        
+        if(handler.getKeyManager().up)
+        	faceUp = true;
+        if(handler.getKeyManager().down || handler.getKeyManager().left || handler.getKeyManager().right)
+        	faceUp = false;
     }
 
     private void FireBallAttack(Graphics g) {
