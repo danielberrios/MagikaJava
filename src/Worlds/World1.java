@@ -18,11 +18,12 @@ public class World1 extends BaseWorld{
         this.handler = handler;
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
         
-        
+        //new
        
         entityManager.addEntity(new Bush(handler, 200, 350));
         entityManager.addEntity(new Bush(handler, 500, 400));
         entityManager.addEntity(new Bush(handler, 800, 500));
+        
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Tree(handler, 533, 276));
