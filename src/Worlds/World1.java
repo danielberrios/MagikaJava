@@ -35,6 +35,8 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 700, 83));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
+        
+        // new
         entityManager.addEntity(new SkelyEnemy2(handler, 1000, 700));
 
         entityManager.getPlayer().setX(spawnX);
