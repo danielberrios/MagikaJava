@@ -9,6 +9,7 @@ import javax.sound.sampled.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -74,7 +75,9 @@ public class Bush extends StaticEntity {
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.stickItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	Random rand = new Random();
+    	int sticks = rand.nextInt(2) + 1;
+        handler.getWorld().getItemManager().addItem(Item.stickItem.createNew((int)x + bounds.x,(int)y + bounds.y, sticks));
 
 
     }

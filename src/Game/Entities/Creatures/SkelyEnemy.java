@@ -81,6 +81,8 @@ public class SkelyEnemy extends CreatureBase  {
         if(healthcounter>=120&& !isBeinghurt()){
             healthcounter=0;
         }
+        
+        
 
 
         Skelyinventory.tick();
@@ -189,5 +191,6 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void die() {
+    	handler.getWorld().getItemManager().addItem(Item.bananaItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
     }
 }
