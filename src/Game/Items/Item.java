@@ -33,7 +33,6 @@ public class Item {
     public static Item stickItem = new Item(Images.stick, "Stick",3);
     public static Item bananaItem = new Item(Images.banana, "Banana",4);
 
-
     //class
 
     public Item(BufferedImage texture, String name, int id){

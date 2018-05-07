@@ -11,7 +11,7 @@ import Resources.Images;
 public class Chest extends StaticEntity {
 	private Rectangle ir = new Rectangle();
 	public Boolean EP = false;
-	public boolean open = false;
+	private boolean open = false;
 	private long lastOpened = 0;
 	private boolean ready = true;
 
@@ -55,6 +55,7 @@ public class Chest extends StaticEntity {
 	public void render(Graphics g) {
 		if(open) {
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+			g.drawImage(Images.chestGUI, (int) (x) - (Images.chestGUI.getWidth()/2) + (width/2), (int) (y) - (Images.chestGUI.getHeight()) - 50, null);
 		} else {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
@@ -87,6 +88,10 @@ public class Chest extends StaticEntity {
 	@Override
 	public void die() {
 
+	}
+	
+	public boolean isOpen() {
+		return open;
 	}
 
 }

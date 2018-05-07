@@ -1,6 +1,8 @@
 package Game.Entities;
 
 import Game.Entities.Creatures.Player;
+import Game.Entities.Statics.Chest;
+import Game.Entities.Statics.StaticEntity;
 import Main.Handler;
 
 import java.awt.*;
@@ -79,5 +81,4 @@ public class EntityManager {
     public void setEntities(ArrayList<EntityBase> entities) {
         this.entities = entities;
     }
-
 }

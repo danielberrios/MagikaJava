@@ -90,6 +90,7 @@ public class Player extends CreatureBase {
 
 
         //Movement
+        
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
@@ -250,21 +251,23 @@ public class Player extends CreatureBase {
         xMove = 0;
         yMove = 0;
 
-        if(handler.getKeyManager().up &&! attacking)
-            yMove = -speed;
-        if(handler.getKeyManager().down&&! attacking)
-            yMove = speed;
-        if(handler.getKeyManager().left&&! attacking)
-            xMove = -speed;
-        if(handler.getKeyManager().right&&! attacking)
-            xMove = speed;
-        if(handler.getKeyManager().ibutt)
-        	if (getHealth() < 75) setHealth(75);
-        
-        if(handler.getKeyManager().up)
-        	faceUp = true;
-        if(handler.getKeyManager().down || handler.getKeyManager().left || handler.getKeyManager().right)
-        	faceUp = false;
+        if(!handler.getWorld().getChest().isOpen() ) {
+        	if(handler.getKeyManager().up &&! attacking)
+        		yMove = -speed;
+        	if(handler.getKeyManager().down&&! attacking)
+        		yMove = speed;
+        	if(handler.getKeyManager().left&&! attacking)
+        		xMove = -speed;
+        	if(handler.getKeyManager().right&&! attacking)
+        		xMove = speed;
+        	if(handler.getKeyManager().ibutt)
+        		if (getHealth() < 75) setHealth(75);
+
+        	if(handler.getKeyManager().up)
+        		faceUp = true;
+        	if(handler.getKeyManager().down || handler.getKeyManager().left || handler.getKeyManager().right)
+        		faceUp = false;
+        }
     }
 
     private void FireBallAttack(Graphics g) {

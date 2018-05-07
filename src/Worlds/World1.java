@@ -18,6 +18,7 @@ public class World1 extends BaseWorld{
         super(handler,path,player);
         this.handler = handler;
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
+        chest = new Chest(handler, 300, 300);
         
         //new
        
@@ -36,7 +37,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
         entityManager.addEntity(new SkelyEnemy2(handler, 1000, 700));
-        entityManager.addEntity(new Chest(handler, 300, 300));
+        entityManager.addEntity(chest);
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);

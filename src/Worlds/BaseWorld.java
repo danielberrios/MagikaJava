@@ -1,6 +1,7 @@
 package Worlds;
 
 import Game.Entities.Creatures.Player;
+import Game.Entities.Statics.Chest;
 import Game.Entities.EntityManager;
 import Game.GameStates.State;
 import Game.Items.ItemManager;
@@ -26,7 +27,7 @@ public class BaseWorld {
     //Item
     protected ItemManager itemManager;
 
-
+    protected Chest chest;
 
 
     public BaseWorld(Handler handler, String path, Player player) {
@@ -131,6 +132,10 @@ public class BaseWorld {
 
     public void setItemManager(ItemManager itemManager) {
         this.itemManager = itemManager;
+    }
+    
+    public Chest getChest() {
+    	return chest;
     }
 
 }
