@@ -49,6 +49,8 @@ public class Images {
     public static BufferedImage banana;
     public static BufferedImage[] chest;
     public static BufferedImage chestGUI;
+    public static BufferedImage bush;
+    
 
     public Images() {
 
@@ -61,8 +63,8 @@ public class Images {
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
         SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
 
-
-        blocks = new BufferedImage[16];
+        
+        blocks = new BufferedImage[15];
 
         player_left = new BufferedImage[4];
         player_right = new BufferedImage[4];
@@ -111,6 +113,7 @@ public class Images {
             
             stick = ImageIO.read(getClass().getResourceAsStream("/Sheets/stick.png"));
             banana = ImageIO.read(getClass().getResourceAsStream("/Sheets/banana.png"));
+            bush = ImageIO.read(getClass().getResourceAsStream("/Sheets/bush.png"));
             
             //chest
             chest[0] = chestSheet.crop(width*0, height*0, width, height);
@@ -214,7 +217,7 @@ public class Images {
             blocks[14] = newsheet.crop(174,410,78,74);//rock
             
             //new
-            blocks[15]=newsheet.crop(110,497, 120, 20);
+//            blocks[15]=newsheet.crop(110,497, 120, 20);
 
 
             //player anim

@@ -84,6 +84,13 @@ public class SkelyEnemy2 extends CreatureBase  {
 
 
         Skelyinventory.tick();
+        
+        
+        // new ai to enemy
+        if(this.getHealth()<50) {
+        	speed=2.0f;
+        	
+        }
 
     }
 
@@ -189,5 +196,8 @@ public class SkelyEnemy2 extends CreatureBase  {
 
     @Override
     public void die() {
+    	handler.getWorld().getItemManager().addItem(Item.bananaItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
     }
+    
+   
 }

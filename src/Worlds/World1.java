@@ -1,9 +1,11 @@
 package Worlds;
 
+import Game.Entities.EntityManager;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Creatures.SkelyEnemy2;
 import Game.Entities.Statics.*;
+import Game.Items.ItemManager;
 import Main.Handler;
 
 /**
@@ -13,6 +15,8 @@ public class World1 extends BaseWorld{
 
     private Handler handler;
     private BaseWorld caveWorld;
+    
+
 
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
@@ -25,7 +29,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Bush(handler, 200, 350));
         entityManager.addEntity(new Bush(handler, 500, 400));
         entityManager.addEntity(new Bush(handler, 800, 500));
-        
+        //
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Tree(handler, 533, 276));
@@ -41,6 +45,8 @@ public class World1 extends BaseWorld{
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+        
+       
     }
 
 }

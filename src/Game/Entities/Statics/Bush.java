@@ -23,10 +23,10 @@ public class Bush extends StaticEntity {
 
     public Bush(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
-        bounds.x=14;
-        bounds.y=85;
-        bounds.width = 36;
-        bounds.height = 48;
+        bounds.x=20;
+        bounds.y=20;
+        bounds.width = 60;
+        bounds.height = 80;
         health=16;
 
         try {
@@ -67,7 +67,7 @@ public class Bush extends StaticEntity {
     @Override
     public void render(Graphics g) {
         renderLife(g);
-        g.drawImage(Images.blocks[15],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.bush,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }
 
