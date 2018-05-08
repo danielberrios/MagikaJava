@@ -87,7 +87,7 @@ public class SkelyEnemy2 extends CreatureBase  {
         
         
         // new ai to enemy
-        if(this.getHealth()<50) {
+        if(this.getHealth()<28) {
         	speed=2.0f;
         	
         }
