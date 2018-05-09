@@ -27,8 +27,6 @@ public class BaseWorld {
     //Item
     protected ItemManager itemManager;
 
-    protected Chest chest;
-
 
     public BaseWorld(Handler handler, String path, Player player) {
 
@@ -133,9 +131,4 @@ public class BaseWorld {
     public void setItemManager(ItemManager itemManager) {
         this.itemManager = itemManager;
     }
-    
-    public Chest getChest() {
-    	return chest;
-    }
-
 }

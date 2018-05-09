@@ -251,7 +251,7 @@ public class Player extends CreatureBase {
         xMove = 0;
         yMove = 0;
 
-        if(!handler.getWorld().getChest().isOpen() ) {
+        if(!handler.getWorld1().getChest().isOpen()) {
         	if(handler.getKeyManager().up &&! attacking)
         		yMove = -speed;
         	if(handler.getKeyManager().down&&! attacking)

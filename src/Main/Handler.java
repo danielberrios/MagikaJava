@@ -4,6 +4,7 @@ import Inputs.KeyManager;
 import Resources.GameCamera;
 import Inputs.MouseManager;
 import Worlds.BaseWorld;
+import Worlds.World1;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -12,6 +13,7 @@ public class Handler {
 
     private Game game;
     private BaseWorld world;
+    private World1 world1;
 
     public Handler(Game game){
         this.game = game;
@@ -53,6 +55,12 @@ public class Handler {
         this.world = world;
     }
 
-
+    public World1 getWorld1() {
+    	return world1;
+    }
+    
+    public void setWorld1(World1 world) {
+    	this.world1 = world;
+    }
 
 }

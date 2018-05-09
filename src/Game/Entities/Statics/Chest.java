@@ -93,5 +93,9 @@ public class Chest extends StaticEntity {
 	public boolean isOpen() {
 		return open;
 	}
+	
+	public void setOpen(boolean b) {
+		open = b;
+	}
 
 }

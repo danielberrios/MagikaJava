@@ -71,7 +71,9 @@ public class Door extends StaticEntity {
             g.drawImage(Images.loading,0,0,800,600,null);
             handler.setWorld(world);
         } else if(handler.getKeyManager().nbutt) {
-        	handler.setWorld(world);
+        	if(!handler.getWorld1().getChest().isOpen()) {
+        		handler.setWorld(world);
+        	}
         }
     }
 
