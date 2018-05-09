@@ -14,6 +14,9 @@ public class Chest extends StaticEntity {
 	private boolean open = false;
 	private long lastOpened = 0;
 	private boolean ready = true;
+	private int numBananas = 0;
+	private int numSticks = 0;
+	private boolean doorVisible = false;
 
 	public Chest(Handler handler, float x, float y) {
 		super(handler, x, y, 32, 32);
@@ -33,6 +36,10 @@ public class Chest extends StaticEntity {
 
 	@Override
 	public void tick() {
+		
+		if(!doorVisible && numSticks >= 3 && numBananas >= 3) {
+			doorVisible = true;
+		}
 
 		if(isBeinghurt()){
 			setHealth(10000000);
@@ -53,9 +60,21 @@ public class Chest extends StaticEntity {
 
 	@Override
 	public void render(Graphics g) {
+		g.setColor(Color.WHITE);
 		if(open) {
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 			g.drawImage(Images.chestGUI, (int) (x) - (Images.chestGUI.getWidth()/2) + (width/2), (int) (y) - (Images.chestGUI.getHeight()) - 50, null);
+			
+			if(numBananas > 0) {
+				g.drawImage(Images.banana, 258+64, 187, 32, 32, null);
+				g.drawString(String.valueOf(numBananas), 258+96,187+32);
+			}
+			
+			if(numSticks > 0) {
+				g.drawImage(Images.stick, 258, 187, 32, 32, null);
+				g.drawString(String.valueOf(numSticks), 258+32,187+32);
+			}
+			
 		} else {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
@@ -65,8 +84,6 @@ public class Chest extends StaticEntity {
 
 	private void checkForPlayer(Graphics g, Player p) {
 		Rectangle pr = p.getCollisionBounds(0,0);
-		//g.fillRect(pr.x, pr.y, pr.width, pr.height);
-		//g.fillRect(ir.x, ir.y, ir.width, ir.height);
 
 		if(ir.intersects(pr) && (pr.x > this.getX() - (ir.width/2)) && (pr.x < this.getX() + (this.width/2)) && (p.faceUp)){
 			if(EP && ready) {
@@ -96,6 +113,26 @@ public class Chest extends StaticEntity {
 	
 	public void setOpen(boolean b) {
 		open = b;
+	}
+
+	public int getBananas() {
+		return numBananas;
+	}
+
+	public void setBananas(int numBananas) {
+		this.numBananas = numBananas;
+	}
+
+	public int getSticks() {
+		return numSticks;
+	}
+
+	public void setSticks(int numSticks) {
+		this.numSticks = numSticks;
+	}
+
+	public boolean isDoorVisible() {
+		return doorVisible;
 	}
 
 }

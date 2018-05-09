@@ -22,9 +22,11 @@ public class Inventory {
 	private ArrayList<Item> inventoryItems;
 	private int[] rows = new int[5];
 	private int[] columns = new int[5];
+	private ArrayList<Integer> xValues;
+	private ArrayList<Integer> yValues;
 
 	public Inventory(Handler handler){
-		
+
 		for (int i = 0; i < 5; i++) {
 			columns[i] = 24 + (60 * i) + i;
 			rows[i] = 24 + (60 * i);
@@ -32,6 +34,8 @@ public class Inventory {
 
 		this.handler=handler;
 		inventoryItems = new ArrayList<>();
+		xValues = new ArrayList<>();
+		yValues = new ArrayList<>();
 
 		uiManager = new UIManager(handler);
 
@@ -61,7 +65,10 @@ public class Inventory {
 		handler.getMouseManager().setUimanager(uiManager);
 		uiManager.tick();
 
-
+		if(handler.getWorld1().getChest().isOpen()) {
+			inventoryToChest(Item.bananaItem, 4);
+			inventoryToChest(Item.stickItem, 3);
+		}
 
 	}
 
@@ -84,7 +91,7 @@ public class Inventory {
 
 	//Inventory Methods
 	private void renderItems(Graphics g) {
-		
+
 		if(inventoryItems.size() > 0) {
 			int fullRows = 0;
 			int lastColumn = 0;
@@ -104,16 +111,20 @@ public class Inventory {
 					for(int j = 0; j < 5; j++) {
 						g.drawImage(inventoryItems.get(currentItem).getTexture(), columns[j], rows[i], inventoryItems.get(currentItem).getWidth(), inventoryItems.get(currentItem).getHeight(), null);
 						g.drawString(String.valueOf(inventoryItems.get(currentItem).getCount()), columns[j]+33,rows[i]+35);
+						xValues.add(columns[j]);
+						yValues.add(rows[i]);
 						currentItem++;
 					}
 					currentRow++;
 				}
 			}
-			
+
 			if(lastColumn < 5) {
 				for(int k = 0; k < lastColumn; k++) {
 					g.drawImage(inventoryItems.get(currentItem).getTexture(), columns[k], rows[currentRow], inventoryItems.get(currentItem).getWidth(), inventoryItems.get(currentItem).getHeight(), null);
 					g.drawString(String.valueOf(inventoryItems.get(currentItem).getCount()), columns[k]+33,rows[currentRow]+35);
+					xValues.add(columns[k]);
+					yValues.add(rows[currentRow]);
 					currentItem++;
 				}
 			}
@@ -168,5 +179,50 @@ public class Inventory {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public void inventoryToChest(Item item, int id) {
+		if(handler.getMouseManager().isLeftPressed()) {
+			if((id == 3 && handler.getWorld1().getChest().getSticks() < 3) || (id == 4 && handler.getWorld1().getChest().getBananas() < 3)) { 
+				int x = 0;
+				int y = 0;
+				int index = 0;
+				int amount = 0;
+				int bananas = handler.getWorld1().getChest().getBananas();
+				int sticks = handler.getWorld1().getChest().getSticks();
+
+				for(Item i : inventoryItems) {
+					if(i.getId() == id) {
+						index = inventoryItems.indexOf(i);
+						x = xValues.get(index);
+						y = yValues.get(index);
+						amount++;
+					}
+				}
+
+				if(amount > 0) {
+					if((handler.getMouseManager().getMouseX() >= x) && (handler.getMouseManager().getMouseX() <= x + item.getWidth())) {
+						if((handler.getMouseManager().getMouseY() >= y) && (handler.getMouseManager().getMouseY() <= y + item.getWidth())) {
+							if(item.getCount() >= 3) {
+								if(id == 3 && sticks < 3) {
+									handler.getWorld1().getChest().setSticks(sticks + 3);
+								} else if(id == 4 && bananas < 3){
+									handler.getWorld1().getChest().setBananas(bananas + 3);
+								}
+								inventoryItems.get(index).setCount(item.getCount() - 3);
+							} else {
+								if(id == 3 && sticks < 3) {
+									handler.getWorld1().getChest().setSticks(sticks + inventoryItems.get(index).getCount());
+									inventoryItems.get(index).setCount(0);
+								} else if(id == 4 && bananas < 3){
+									handler.getWorld1().getChest().setBananas(bananas + inventoryItems.get(index).getCount());
+									inventoryItems.get(index).setCount(0);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -16,12 +16,14 @@ public class World1 extends BaseWorld{
     private Handler handler;
     private BaseWorld caveWorld;
     Chest chest;
+    Door door;
 
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
         this.handler = handler;
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
         chest = new Chest(handler, 300, 300);
+        door = new Door(handler, 100, 0,caveWorld);
         //new
        
         entityManager.addEntity(new Bush(handler, 200, 350));
@@ -36,10 +38,10 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 88, 1345));
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
-        entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
         entityManager.addEntity(new SkelyEnemy2(handler, 1000, 700));
         entityManager.addEntity(chest);
+        entityManager.addEntity(door);
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
@@ -54,5 +56,9 @@ public class World1 extends BaseWorld{
     public void tick() {
     	handler.setWorld1(this);
     	super.tick();
+    }
+    
+    public Door getDoor() {
+    	return door;
     }
 }
