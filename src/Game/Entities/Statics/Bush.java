@@ -75,11 +75,9 @@ public class Bush extends StaticEntity {
 
     @Override
     public void die() {
-    	//Random rand = new Random();
-    	//int sticks = rand.nextInt(2) + 1;
-       //handler.getWorld().getItemManager().addItem(Item.stickItem.createNew((int)x + bounds.x,(int)y + bounds.y, sticks));
-        handler.getWorld().getItemManager().addItem(Item.stickItem.createNew((int)x + bounds.x,(int)y + bounds.y, 5));
-        handler.getWorld().getItemManager().addItem(Item.bananaItem.createNew((int)x + bounds.x,(int)y + bounds.y, 5));
+    	Random rand = new Random();
+    	int sticks = rand.nextInt(2) + 1;
+        handler.getWorld().getItemManager().addItem(Item.stickItem.createNew((int)x + bounds.x,(int)y + bounds.y, sticks));
 
 
     }
